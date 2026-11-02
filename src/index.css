@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0a3d8f;
+  --color-brand-deep: #072a63;
+  --color-leaf: #3a9d34;
+  --color-leaf-soft: #e8f4e6;
+  --color-paper: #f5f8fb;
+  --color-ink: #0c1b33;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+html { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body { font-family: var(--font-body); color: var(--color-ink); background: #fff; }
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* dashed "clean fluid" lines move along the pipe */
+@keyframes flow { to { stroke-dashoffset: -24; } }
+.flow { stroke-dasharray: 8 6; animation: flow 1.2s linear infinite; }
+
+@keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+.drift { animation: drift 7s ease-in-out infinite; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+:focus-visible { outline: 2px solid var(--color-leaf); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow, .drift { animation: none; }
+}
